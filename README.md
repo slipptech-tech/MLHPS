@@ -17,6 +17,32 @@ The application combines **server management, real-time system monitoring, netwo
 * **Local-Only Operation** — server services are designed to bind to `127.0.0.1`, keeping the environment intended for local development and testing.
 * **Lightweight Architecture** — built with Python, PySide6, PyQtGraph, and PSUtil.
 
+Using strong TCP Technology:
+
+def start_tcp_server(
+    host,
+    port
+):
+
+    global tcp_thread
+    global server_started
+
+    tcp_thread = threading.Thread(
+        target=tcp_server_loop,
+        args=(
+            host,
+            port
+        ),
+        daemon=True
+    )
+
+    tcp_thread.start()
+
+    server_started = time.time()
+
+
+
+
 ### Purpose
 
 MLHPS is intended for **local development, server testing, performance monitoring, debugging, and educational purposes**. It provides developers with a clear overview of how their local server and computer resources behave while applications are running.
